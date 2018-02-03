@@ -1,0 +1,27 @@
+service:
+  name: telegram-gdaxbot
+
+custom:
+  config: ${file(./config.${opt:stage}.js)}
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: ${opt:stage}
+  region: ${self:custom.config.region}
+  role: ${self:custom.config.role}
+  profile: ${self:custom.config.profile}
+  environment:
+    BOT_TOKEN: ${self:custom.config.telegram.bot_token}
+    CHANNEL_ID: ${self:custom.config.telegram.channel_id}
+    STAGE: ${self:provider.stage}
+
+package:
+  exclude:
+    - .git/**
+
+functions:
+  trades:
+    handler: app/trades.notify
+    events:
+      - schedule: ${self:custom.config.schedule}
