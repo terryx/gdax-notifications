@@ -1,6 +1,8 @@
 ## GDAX Notifications
 Simple configurable telegram notifications about [GDAX trades](https://www.gdax.com/trade)
 
+You can set time interval and currency limit to watch for when there're huge trades happen. Check out this telegram [bot](https://t.me/joinchat/AAAAAFBpdWByx_dFcYMaQg)
+
 ### Getting started
 - Make sure you have at least NodeJS version 6 installed
 - An AWS account and necessary IAM role to create and execute lambda function
