@@ -25,3 +25,7 @@ functions:
     handler: app/trades.notify
     events:
       - schedule: ${self:custom.config.schedule}
+  orders:
+    handler: app/orders.notify
+    events:
+      - schedule: ${self:custom.config.schedule}

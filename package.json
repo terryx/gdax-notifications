@@ -6,6 +6,7 @@
   "scripts": {
     "test": "standard",
     "trades:notify": "sls invoke local -f trades --stage=dev",
+    "orders:notify": "sls invoke local -f orders --stage=dev",
     "deploy": "sls deploy"
   },
   "author": "Terry Yuen",
