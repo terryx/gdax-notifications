@@ -27,7 +27,7 @@ const notify = (event, context, callback) => {
         sumBy(res.bids)
       ))
       .filter(([ asks, bids ]) =>
-        asks.size.value() >= (trade.total_amount * 1.5) || bids.size.value() >= (trade.total_amount * 1.5)
+        asks.size.value() >= (trade.total_amount * trade.factor) || bids.size.value() >= (trade.total_amount * trade.factor)
       )
       .map(([ asks, bids ]) => {
         const text = `
@@ -38,6 +38,7 @@ Bids: ${bids.price.format('0.0a')} ${trade.counter_currency} - ${bids.size.forma
       })
     )
     .toArray()
+    .skipWhile(texts => texts.length === 0)
     .mergeMap(texts => {
       const bot = new Telegram(process.env.BOT_TOKEN)
       texts.unshift('<b>Aggregated Order Book</b>')
