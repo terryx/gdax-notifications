@@ -9,5 +9,9 @@ Simple configurable telegram notifications about [GDAX trades](https://www.gdax.
 - You should have 2 copy, `dev` and `prd` depending on your serverless `STAGE` for development and production
 - Run `npm install` and `npm run trades:notify`
 
+
+### Deployment
+- Run `npm run deploy -- --stage=<STAGE>` to deploy your serverless function. Alternatively you can run `sls deploy --stage=<STAGE>` if you install serverless as global dependency. E.g `sls deploy --stage=prd`
+
 ### References
 - [GDAX API Documentation](https://docs.gdax.com/)

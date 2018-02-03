@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "standard",
-    "trades:notify": "sls invoke local -f trades --stage=dev"
+    "trades:notify": "sls invoke local -f trades --stage=dev",
+    "deploy" "sls deploy"
   },
   "author": "Terry Yuen",
   "license": "MIT",
