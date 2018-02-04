@@ -12,17 +12,20 @@ module.exports = () => {
       {
         base_currency: 'BTC',
         counter_currency: 'USD',
-        total_amount: 5
+        total_amount: 100,
+        total_fiat: 1000000
       },
       {
         base_currency: 'ETH',
         counter_currency: 'USD',
-        total_amount: 10
+        total_amount: 500,
+        total_fiat: 1000000
       },
       {
         base_currency: 'LTC',
         counter_currency: 'USD',
-        total_amount: 100
+        total_amount: 2000,
+        total_fiat: 1000000
       }
     ]
   }

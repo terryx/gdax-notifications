@@ -28,7 +28,7 @@ const notify = (event, context, callback) => {
         sumBy(res.bids)
       ))
       .filter(([ asks, bids ]) =>
-        asks.size.value() >= (trade.total_amount * trade.factor) || bids.size.value() >= (trade.total_amount * trade.factor)
+        asks.price.value() >= trade.total_fiat || bids.price.value() >= trade.total_fiat
       )
       .map(([ asks, bids ]) => {
         const text = `
