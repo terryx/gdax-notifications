@@ -7,7 +7,8 @@ const config = require(`../config.${process.env.STAGE}`)()
 const sumBy = (orders) => Observable
   .from(orders)
   .reduce((acc, cur) => {
-    acc.price = acc.price.add(cur[0])
+    const price = numeral(cur[0]).multiply(numeral(cur[1]).value()).value()
+    acc.price = acc.price.add(price)
     acc.size = acc.size.add(cur[1])
 
     return acc
@@ -31,8 +32,8 @@ const notify = (event, context, callback) => {
       )
       .map(([ asks, bids ]) => {
         const text = `
-Asks: ${asks.price.format('0.0a')} ${trade.counter_currency} - ${asks.size.format('0.0a')} ${trade.base_currency}
-Bids: ${bids.price.format('0.0a')} ${trade.counter_currency} - ${bids.size.format('0.0a')} ${trade.base_currency}
+Asks: ${asks.size.format('0.0a')} ${trade.base_currency} for ${asks.price.format('0.0a')} ${trade.counter_currency}
+Bids: ${bids.size.format('0.0a')} ${trade.base_currency} for ${bids.price.format('0.0a')} ${trade.counter_currency}
         `
         return text
       })

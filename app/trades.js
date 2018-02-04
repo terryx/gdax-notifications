@@ -13,7 +13,6 @@ const notify = (event, context, callback) => {
       .fromPromise(gdax.get(`/products/${trade.base_currency}-${trade.counter_currency}/trades`))
       .mergeMap(res => Observable.from(res))
       .filter(res => numeral(res.size).value() >= trade.total_amount)
-      .do(console.info)
       .toArray()
       .mergeMap(res => {
         const data = Observable
